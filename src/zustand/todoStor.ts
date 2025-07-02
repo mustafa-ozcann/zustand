@@ -2,55 +2,46 @@ import { create } from 'zustand';
 
 export type Todo = {
   id: number;
-  text: string;
+  title: string;
+  description: string;
   completed: boolean;
+  image: string;
+  
 };
-
-
 
 type TodoState = {
   todos: Todo[];
-  addTodo: (text: string) => void;
-  toggleTodo: (id: number) => void;
+  addTodo: (title: string, description: string, image: string) => void;
+  
   deleteTodo: (id: number) => void;
+  editTodo: (id: number, title: string, description: string, image: string) => void;
   loading: boolean;
 
 };
-
-const mustafa = {
-  name: 'mustafa',
-  age: 20,
-  city: 'istanbul',
-  country: 'turkey',
-  email: 'mustafa@gmail.com',
-  phone: '1234567890',
-  address: 'istanbul',
-}
-
-
 
 const useTodoStore = create<TodoState>((set) => ({
   todos: [],
   loading: false,
 
-  addTodo: (text: string) =>
+  addTodo: (title: string, description: string, image: string) =>
     set((state) => ({
       todos: [
         ...state.todos,
-        { id: Date.now(), text, completed: false },
+        { id: Date.now(), title, description, image, completed: false },
       ],
     })),
-    mustafa,
+    
 
-  toggleTodo: (id: number) =>
+  
+
+  editTodo: (id: number, title: string, description: string, image: string) =>
     set((state) => ({
       todos: state.todos.map((todo) =>
         todo.id === id
-          ? { ...todo, completed: !todo.completed }
+          ? { ...todo, title, description, image }
           : todo
       ),
     })),
-    
 
   deleteTodo: (id: number) =>
     set((state) => ({
