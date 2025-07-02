@@ -6,6 +6,13 @@ export type Todo = {
   completed: boolean;
 };
 
+type TodoAction = {
+  addTodo: (text: string) => void;
+  toggleTodo: (id: number) => void;
+  deleteTodo: (id: number) => void;
+  setLoading: (loading: boolean) => void;
+};
+
 type TodoState = {
   todos: Todo[];
   addTodo: (text: string) => void;
