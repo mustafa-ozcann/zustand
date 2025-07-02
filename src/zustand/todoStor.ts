@@ -11,10 +11,12 @@ type TodoState = {
   addTodo: (text: string) => void;
   toggleTodo: (id: number) => void;
   deleteTodo: (id: number) => void;
+  loading: boolean;
 };
 
 const useTodoStore = create<TodoState>((set) => ({
   todos: [],
+  loading: false,
 
   addTodo: (text: string) =>
     set((state) => ({
