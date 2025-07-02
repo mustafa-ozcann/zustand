@@ -8,6 +8,7 @@ const TodoList = lazy(() => import('../components/TodoList'));
 const UserDetails = lazy(() => import('../components/UserDetails'));
 const Test = lazy(() => import('../components/Test'));
 const Login = lazy(() => import('../pages/Login'));
+const Profile = lazy(() => import('../pages/Proifle'));
 
 function index() {
   return (
@@ -17,6 +18,7 @@ function index() {
         <Route path="/users/:id" element={<UserDetails />} />
         <Route path="/test" element={<Test />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
     </Routes>
   )
 }
