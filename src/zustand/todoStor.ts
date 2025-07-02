@@ -6,16 +6,32 @@ export type Todo = {
   completed: boolean;
 };
 
+
+
 type TodoState = {
   todos: Todo[];
   addTodo: (text: string) => void;
   toggleTodo: (id: number) => void;
   deleteTodo: (id: number) => void;
+  loading: boolean;
+
 };
 
-/** 
+const mustafa = {
+  name: 'mustafa',
+  age: 20,
+  city: 'istanbul',
+  country: 'turkey',
+  email: 'mustafa@gmail.com',
+  phone: '1234567890',
+  address: 'istanbul',
+}
+
+
+
 const useTodoStore = create<TodoState>((set) => ({
   todos: [],
+  loading: false,
 
   addTodo: (text: string) =>
     set((state) => ({
@@ -24,6 +40,7 @@ const useTodoStore = create<TodoState>((set) => ({
         { id: Date.now(), text, completed: false },
       ],
     })),
+    mustafa,
 
   toggleTodo: (id: number) =>
     set((state) => ({
@@ -33,6 +50,7 @@ const useTodoStore = create<TodoState>((set) => ({
           : todo
       ),
     })),
+    
 
   deleteTodo: (id: number) =>
     set((state) => ({
